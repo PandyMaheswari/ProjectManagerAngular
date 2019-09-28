@@ -1,0 +1,92 @@
+<div class="container">
+  <form class="form-horizontal">
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Project:</label>
+      <div class="col col-sm-8">
+        <input type="text" class="form-control" [(ngModel)]="pj.project" name="project" />
+      </div>
+    </div>
+    <div class="form-group row">
+
+        <div class="col col-sm-3">
+      <label>
+        
+        <input type="checkbox" [(ngModel)]="dtchk" name="dtchk" />Set Start and End Date
+        
+        <input type="date" class="form-control" [(ngModel)]="pj.sdate" name="sdate" placeholder="Start Date" [disabled]="dtchk"/>
+        <input type="date" class="form-control" [(ngModel)]="pj.edate" name="edate" placeholder="End Date" [disabled]="dtchk"/>
+      </label>
+    </div>
+
+
+
+
+    </div>
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Priority:</label>
+      <div class="col col-sm-8 range">
+        <input type="range" min="0" max="30" class="form-control-range" [(ngModel)]="pj.priority" name="priority" onchange="range.value=value"
+        />
+        <output id="range">15</output>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Manager:</label>
+      <div class="col col-sm-4">
+        <input type="text" class="form-control" [(ngModel)]="pj.empid" name="empid" />
+      </div>
+    </div>
+
+    <button type="submit " class="btn btn-info pull-right " (click)="addProject() ">{{actbtn}}</button>
+    <button type="submit " class="btn pull-right " (click)="pjreset() ">Reset</button>
+  </form>
+  <h4>{{ sucessmsg }}</h4>
+</div>
+<hr/>
+<div>
+  <form class="form-horizontal" *ngFor="let pjs of projects">
+    <div class="form-group row">
+
+      <div class="col-md-8">
+
+        <div class="row">
+          <label class="control-label col col-sm-2">Project:</label>
+          <output type="text">{{pjs.project}}</output>
+        </div>
+        <div class="row">
+
+          <label class="control-label col col-sm-3">No of Tasks:</label>
+          <output type="text">{{pjs.tottsk}}</output>
+
+          <label class="control-label col col-sm-2">Completed:</label>
+          <output type="text" class="align-center">{{pjs.comptsk}}</output>
+        </div>
+        <div class="row">
+          <label class="control-label col col-sm-3">Start Date:</label>
+          <output>{{pjs.sdate}}</output>
+          <label class="control-label col col-sm-2">End Date:</label>
+          <output>{{pjs.edate}}</output>
+        </div>
+
+      </div>
+
+      <div class="form-group col-md-2">
+        <div class="row">
+          <label class="control-label col col-sm-2">Priority</label>
+        </div>
+        <div class="row">
+          <output>{{pjs.priority}}</output>
+        </div>
+
+
+      </div>
+      <div class="form-group col-sm-1">
+        <button type="submit" class="btn btn-info btn-sm " (click)="updProject(pjs)">Update</button>
+        <button type="submit" class="btn btn-secondary btn-sm " (click)="susProject(pjs)">Suspend</button>
+      </div>
+    </div>
+
+    <hr/>
+  </form>
+</div>

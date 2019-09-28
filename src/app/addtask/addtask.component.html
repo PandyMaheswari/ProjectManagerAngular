@@ -1,0 +1,59 @@
+<div class="container"> 
+  <form class="form-horizontal">
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Project:</label>
+      <div class="col col-sm-8">
+        <input type="text" class="form-control" [(ngModel)]="tsk.project" name="project" [disabled]="checked" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Task:</label>
+      <div class="col col-sm-8">
+        <input type="text" class="form-control" [(ngModel)]="tsk.task" name="task" />
+      </div>
+    </div>
+    <div class="form-group row">
+
+      <label>
+        <input type="checkbox" [(ngModel)]="checked" name="tskchk" />Parent Task</label>
+
+
+    </div>
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Priority:</label>
+      <div class="col col-sm-8 range">
+        <input type="range" min="0" max="30" class="form-control-range" [(ngModel)]="tsk.priority" name="priority" onchange="range.value=value"
+          [disabled]="checked" />
+        <output id="range">15</output>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">Parent Task:</label>
+      <div class="col col-sm-8">
+        <input type="text" class="form-control" [(ngModel)]="tsk.parenttask" name="parenttask" [disabled]="checked" />
+      </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col col-sm-2">Start Date:</label>
+      <div class="col col-sm-3">
+        <input type="date" class="form-control" [(ngModel)]="tsk.sdate" name="sdate" [disabled]="checked" />
+      </div>
+      <label class="control-label col col-sm-2">End Date:</label>
+      <div class="col col-sm-3">
+        <input type="date" class="form-control" [(ngModel)]="tsk.edate" name="edate" [disabled]="checked" />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col col-sm-2">User:</label>
+      <div class="col col-sm-4">
+        <input type="text" class="form-control" [(ngModel)]="tsk.empid" name="empid" [disabled]="checked" />
+      </div>
+    </div>
+
+    <button type="submit " class="btn btn-info pull-right " (click)="addTask() ">{{actbtn}}</button>
+    <button type="submit " class="btn pull-right " (click)="tskreset() ">Reset</button>
+  </form>
+  <h4>{{ sucessmsg }}</h4>
+</div>
